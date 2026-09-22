@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Family Soft — домашний текстиль</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f6f8;
+            color: #20242a;
+        }
+
+        button,
+        input {
+            font-family: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        /* ================= HEADER ================= */
+
+        .top-line {
+            background: #f0f1f4;
+            padding: 8px 6%;
+            font-size: 13px;
+            color: #666;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        header {
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+        }
+
+        .header-main {
+            min-height: 75px;
+            padding: 12px 6%;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            text-decoration: none;
+            font-size: 29px;
+            font-weight: 800;
+            color: #222;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: #ef6c9b;
+        }
+
+        .catalog-btn {
+            border: none;
+            background: #ef6c9b;
+            color: white;
+            padding: 13px 20px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .catalog-btn:hover {
+            background: #df5b8b;
+        }
+
+        .search {
+            flex: 1;
+            display: flex;
+            background: #f0f1f4;
+            border-radius: 12px;
+            overflow: hidden;
+            min-width: 150px;
+        }
+
+        .search input {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 14px 18px;
+            font-size: 15px;
+        }
+
+        .search button {
+            border: none;
+            background: transparent;
+            padding: 0 20px;
+            font-size: 22px;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header-icons button {
+            border: none;
+            background: transparent;
+            color: #333;
+            font-size: 13px;
+            min-width: 65px;
+        }
+
+        .header-icons .icon {
+            display: block;
+            font-size: 23px;
+            margin-bottom: 3px;
+        }
+
+        /* ================= NAV ================= */
+
+        nav {
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 25px;
+            padding: 13px 6%;
+            overflow-x: auto;
+            background: white;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #444;
+            white-space: nowrap;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #ef6c9b;
+        }
+
+        /* ================= MAIN ================= */
+
+        main {
+            max-width: 1400px;
+            margin: auto;
+            padding: 25px 5%;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 390px;
+            border-radius: 25px;
+            padding: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            overflow: hidden;
+
+            background:
+                linear-gradient(110deg,
+                #ffe4ed 0%,
+                #fbd5e3 45%,
+                #dcecff 100%);
+
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-label {
+            color: #d95888;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 5vw, 70px);
+            line-height: 1;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: #e85e91;
+        }
+
+        .hero p {
+            color: #555;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .hero-btn {
+            border: none;
+            background: #222;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .hero-decoration {
+            width: 330px;
+            height: 330px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            font-weight: bold;
+            color: #ef6c9b;
+            transform: rotate(-8deg);
+        }
+
+        /* ================= TITLES ================= */
+
+        .section {
+            margin-top: 45px;
+        }
+
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-title h2 {
+            font-size: 28px;
+        }
+
+        .section-title a {
+            color: #e15f90;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* ================= CATEGORIES ================= */
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .category {
+            border: none;
+            background: white;
+            border-radius: 18px;
+            padding: 25px;
+            text-align: left;
+            transition: 0.25s;
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .category-icon {
+            width: 65px;
+            height: 65px;
+            border-radius: 18px;
+            background: #ffe5ef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 31px;
+            margin-bottom: 18px;
+        }
+
+        .category h3 {
+            margin-bottom: 8px;
+        }
+
+        .category p {
+            color: #888;
+            font-size: 13px;
+        }
+
+        /* ================= PROMO ================= */
+
+        .promo {
+            background: linear-gradient(110deg, #292d35, #505664);
+            color: white;
+            border-radius: 22px;
+            padding: 35px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .promo h2 {
+            font-size: 30px;
+            margin: 8px 0;
+        }
+
+        .promo p {
+            color: #d9d9d9;
+        }
+
+        .promo button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 9px;
+            background: #ef6c9b;
+            color: white;
+            font-weight: bold;
+        }
+
+        .promo-big {
+            font-size: 60px;
+            font-weight: bold;
+            color: #ef6c9b;
+        }
+
+        /* ================= PRODUCTS ================= */
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .product {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            position: relative;
+            transition: 0.25s;
+        }
+
+        .product:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .product-image {
+            height: 230px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+            font-weight: bold;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .pink {
+            background: linear-gradient(135deg, #f6b5c9, #e980a5);
+        }
+
+        .blue {
+            background: linear-gradient(135deg, #a9d8f5, #6eaed8);
+        }
+
+        .cream {
+            background: linear-gradient(135deg, #f1dfbd, #d4b98b);
+        }
+
+        .purple {
+            background: linear-gradient(135deg, #d9c0e9, #ad8ac7);
+        }
+
+        .mint {
+            background: linear-gradient(135deg, #b8e5d4, #76c3a4);
+        }
+
+        .product-image span {
+            font-size: 26px;
+        }
+
+        .sale {
+            position: absolute;
+            left: 12px;
+            top: 12px;
+            background: #ef6c9b;
+            color: white;
+            padding: 6px 9px;
+            border-radius: 7px;
+            font-size: 11px;
+        }
+
+        .favorite {
+            position: absolute;
+            right: 12px;
+            top: 10px;
+            border: none;
+            background: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 20px;
+        }
+
+        .product-info {
+            padding: 17px;
+        }
+
+        .rating {
+            color: #f1a300;
+            font-size: 13px;
+        }
+
+        .rating span {
+            color: #999;
+        }
+
+        .product h3 {
+            margin: 8px 0;
+            font-size: 16px;
+        }
+
+        .product-description {
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .old-price {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 13px;
+            margin-left: 7px;
+        }
+
+        .buy {
+            width: 100%;
+            margin-top: 15px;
+            padding: 12px;
+            border: none;
+            border-radius: 9px;
+            background: #ef6c9b;
+            color: white;
+            font-weight: bold;
+        }
+
+        .buy:hover {
+            background: #df5b8b;
+        }
+
+        /* ================= FEATURES ================= */
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .feature {
+            background: white;
+            border-radius: 16px;
+            padding: 22px;
+        }
+
+        .feature-icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .feature h3 {
+            margin-bottom: 7px;
+        }
+
+        .feature p {
+            color: #888;
+            font-size: 13px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #20242a;
+            color: white;
+            margin-top: 60px;
+            padding: 45px 6%;
+        }
+
+        .footer-grid {
+            max-width: 1400px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 35px;
+        }
+
+        footer .logo {
+            color: white;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        footer p {
+            color: #aaa;
+            max-width: 300px;
+            line-height: 1.6;
+        }
+
+        footer h3 {
+            margin-bottom: 15px;
+        }
+
+        footer a {
+            display: block;
+            color: #aaa;
+            text-decoration: none;
+            margin: 10px 0;
+        }
+
+        footer a:hover {
+            color: #ef6c9b;
+        }
+
+        .copyright {
+            border-top: 1px solid #3b3e44;
+            margin-top: 35px;
+            padding-top: 20px;
+            color: #777;
+            font-size: 13px;
+        }
+
+        /* ================= CART ================= */
+
+        .cart-message {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            background: #222;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s;
+            z-index: 999;
+        }
+
+        .cart-message.show {
+            opacity: 1;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1000px) {
+
+            .products {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-decoration {
+                width: 230px;
+                height: 230px;
+            }
+        }
+
+        @media (max-width: 750px) {
+
+            .top-line {
+                display: none;
+            }
+
+            .header-main {
+                flex-wrap: wrap;
+                padding: 12px 4%;
+            }
+
+            .catalog-btn {
+                order: 3;
+            }
+
+            .search {
+                order: 2;
+                width: 100%;
+                flex-basis: 100%;
+            }
+
+            .header-icons {
+                margin-left: auto;
+            }
+
+            nav {
+                padding-left: 4%;
+            }
+
+            main {
+                padding: 15px 4%;
+            }
+
+            .hero {
+                padding: 35px 25px;
+                min-height: 450px;
+            }
+
+            .hero-decoration {
+                display: none;
+            }
+
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .promo-big {
+                display: none;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 520px) {
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .header-icons button {
+                min-width: 45px;
+                font-size: 11px;
+            }
+
+            .header-icons .icon {
+                font-size: 19px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .categories {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .category {
+                padding: 15px;
+            }
+
+            .category-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+
+            .products {
+                gap: 10px;
+            }
+
+            .product-image {
+                height: 170px;
+            }
+
+            .product-info {
+                padding: 12px;
+            }
+
+            .price {
+                font-size: 18px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Верхняя информационная полоска -->
+<div class="top-line">
+    <span>Family Soft · Домашний текстиль для всей семьи</span>
+    <span>Доставка · Помощь · Возврат</span>
+</div>
+
+
+<!-- Шапка -->
+<header>
+
+    <div class="header-main">
+
+        <a href="#" class="logo">
+            family<span>soft</span>
+        </a>
+
+        <button class="catalog-btn" onclick="scrollToCatalog()">
+            ☰ Каталог
+        </button>
+
+        <div class="search">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Искать товары и категории..."
+                onkeyup="searchProducts()"
+            >
+
+            <button>⌕</button>
+        </div>
+
+        <div class="header-icons">
+
+            <button onclick="showMessage('Профиль пока в разработке')">
+                <span class="icon">♙</span>
+                Профиль
+            </button>
+
+            <button onclick="showMessage('Избранное пока в разработке')">
+                <span class="icon">♡</span>
+                Избранное
+            </button>
+
+            <button onclick="showMessage('В корзине пока нет товаров')">
+                <span class="icon">🛒</span>
+                Корзина
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- Меню -->
+    <nav>
+
+        <a href="#" onclick="showMessage('Категория: Все товары')">
+            Все товары
+        </a>
+
+        <a href="#" onclick="showMessage('Категория: Постельное бельё')">
+            Постельное бельё
+        </a>
+
+        <a href="#" onclick="showMessage('Категория: Полотенца')">
+            Полотенца
+        </a>
+
+        <a href="#" onclick="showMessage('Категория: Детское')">
+            Детское
+        </a>
+
+        <a href="#" onclick="showMessage('Категория: Для кухни')">
+            Для кухни
+        </a>
+
+        <a href="#" onclick="showMessage('Раздел Акции')">
+            🔥 Акции
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-label">
+                FAMILY SOFT
+            </div>
+
+            <h1>
+                Уют начинается<br>
+                <span>с маленьких вещей</span>
+            </h1>
+
+            <p>
+                Домашний текстиль для всей семьи.
+                Красивые оттенки, мягкие ткани
+                и уютная атмосфера каждый день.
+            </p>
+
+            <button class="hero-btn" onclick="scrollToCatalog()">
+                Перейти в каталог →
+            </button>
+
+        </div>
+
+        <div class="hero-decoration">
+            SOFT
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= CATEGORIES ================= -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <h2>
+                Популярные категории
+            </h2>
+
+            <a href="#">
+                Все →
+            </a>
+
+        </div>
+
+
+        <div class="categories">
+
+            <button class="category">
+
+                <div class="category-icon">
+                    🛏️
+                </div>
+
+                <h3>
+                    Постельное бельё
+                </h3>
+
+                <p>
+                    Комплекты для уютного сна
+                </p>
+
+            </button>
+
+
+            <button class="category">
+
+                <div class="category-icon">
+                    🛁
+                </div>
+
+                <h3>
+                    Полотенца
+                </h3>
+
+                <p>
+                    Мягкие и приятные
+                </p>
+
+            </button>
+
+
+            <button class="category">
+
+                <div class="category-icon">
+                    🧸
+                </div>
+
+                <h3>
+                    Для детей
+                </h3>
+
+                <p>
+                    Уют для маленьких
+                </p>
+
+            </button>
+
+
+            <button class="category">
+
+                <div class="category-icon">
+                    🍽️
+                </div>
+
+                <h3>
+                    Для кухни
+                </h3>
+
+                <p>
+                    Красивые вещи для дома
+                </p>
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= PROMO ================= -->
+
+    <section class="section">
+
+        <div class="promo">
+
+            <div>
+
+                <small>
+                    СПЕЦИАЛЬНО ДЛЯ ВАС
+                </small>
+
+                <h2>
+                    Соберите уютный комплект
+                </h2>
+
+                <p>
+                    Скидки на выбранные товары
+                </p>
+
+                <button onclick="scrollToCatalog()">
+                    Смотреть товары →
+                </button>
+
+            </div>
+
+            <div class="promo-big">
+                −20%
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= PRODUCTS ================= -->
+
+    <section class="section" id="catalog">
+
+        <div class="section-title">
+
+            <h2>
+                Популярные товары
+            </h2>
+
+            <a href="#">
+                Смотреть все →
+            </a>
+
+        </div>
+
+
+        <div class="products" id="products">
+
+
+            <!-- Товар 1 -->
+
+            <article class="product">
+
+                <div class="product-image pink">
+
+                    <div class="sale">
+                        Хит
+                    </div>
+
+                    <button
+                        class="favorite"
+                        onclick="showMessage('Добавлено в избранное ♡')">
+                        ♡
+                    </button>
+
+                    <span>
+                        SOFT
+                    </span>
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="rating">
+                        ★ 4.9
+                        <span>(128 отзывов)</span>
+                    </div>
+
+                    <h3>
+                        Soft Dream
+                    </h3>
+
+                    <p class="product-description">
+                        Комплект постельного белья
+                    </p>
+
+                    <span class="price">
+                        2 490 ₽
+                    </span>
+
+                    <span class="old-price">
+                        3 290 ₽
+                    </span>
+
+                    <button
+                        class="buy"
+                        onclick="showMessage('Soft Dream добавлен в корзину 🛒')">
+                        В корзину
+                    </button>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- Товар 2 -->
+
+            <article class="product">
+
+                <div class="product-image blue">
+
+                    <div class="sale">
+                        Хит
+                    </div>
+
+                    <button
+                        class="favorite"
+                        onclick="showMessage('Добавлено в избранное ♡')">
+                        ♡
+                    </button>
+
+                    <span>
+                        CLOUD
+                    </span>
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="rating">
+                        ★ 4.8
+                        <span>(96 отзывов)</span>
+                    </div>
+
+                    <h3>
+                        Cloud Touch
+                    </h3>
+
+                    <p class="product-description">
+                        Мягкое банное полотенце
+                    </p>
+
+                    <span class="price">
+                        890 ₽
+                    </span>
+
+                    <span class="old-price">
+                        1 190 ₽
+                    </span>
+
+                    <button
+                        class="buy"
+                        onclick="showMessage('Cloud Touch добавлен в корзину 🛒')">
+                        В корзину
+                    </button>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- Товар 3 -->
+
+            <article class="product">
+
+                <div class="product-image cream">
+
+                    <div class="sale">
+                        Новинка
+                    </div>
+
+                    <button
+                        class="favorite"
+                        onclick="showMessage('Добавлено в избранное ♡')">
+                        ♡
+                    </button>
+
+                    <span>
+                        FAMILY
+                    </span>
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="rating">
+                        ★ 4.9
+                        <span>(84 отзыва)</span>
+                    </div>
+
+                    <h3>
+                        Little Family
+                    </h3>
+
+                    <p class="product-description">
+                        Детский текстиль
+                    </p>
+
+                    <span class="price">
+                        1 690 ₽
+                    </span>
+
+                    <span class="old-price">
+                        2 190 ₽
+                    </span>
+
+                    <button
+                        class="buy"
+                        onclick="showMessage('Little Family добавлен в корзину 🛒')">
+                        В корзину
+                    </button>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- Товар 4 -->
+
+            <article class="product">
+
+                <div class="product-image purple">
+
+                    <div class="sale">
+                        −17%
+                    </div>
+
+                    <button
+                        class="favorite"
+                        onclick="showMessage('Добавлено в избранное ♡')">
+                        ♡
+                    </button>
+
+                    <span>
+                        ROSE
+                    </span>
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="rating">
+                        ★ 4.7
+                        <span>(61 отзыв)</span>
+                    </div>
+
+                    <h3>
+                        Rose Morning
+                    </h3>
+
+                    <p class="product-description">
+                        Нежный комплект для спальни
+                    </p>
+
+                    <span class="price">
+                        2 890 ₽
+                    </span>
+
+                    <span class="old-price">
+                        3 490 ₽
+                    </span>
+
+                    <button
+                        class="buy"
+                        onclick="showMessage('Rose Morning добавлен в корзину 🛒')">
+                        В корзину
+                    </button>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FEATURES ================= -->
+
+    <section class="section">
+
+        <div class="features">
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🚚
+                </div>
+
+                <h3>
+                    Доставка
+                </h3>
+
+                <p>
+                    Доставим заказ в удобное для вас время.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    ↩️
+                </div>
+
+                <h3>
+                    Возврат
+                </h3>
+
+                <p>
+                    Если товар не подошёл — предусмотрен возврат.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    ❤️
+                </div>
+
+                <h3>
+                    Для всей семьи
+                </h3>
+
+                <p>
+                    Подбираем текстиль для детей и взрослых.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🔒
+                </div>
+
+                <h3>
+                    Безопасность
+                </h3>
+
+                <p>
+                    Удобные и безопасные способы оплаты.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+
+            <div class="logo">
+                family<span>soft</span>
+            </div>
+
+            <p>
+                Интернет-магазин домашнего текстиля
+                для всей семьи.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Покупателям
+            </h3>
+
+            <a href="#">
+                Доставка
+            </a>
+
+            <a href="#">
+                Оплата
+            </a>
+
+            <a href="#">
+                Возврат
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Компания
+            </h3>
+
+            <a href="#">
+                О бренде
+            </a>
+
+            <a href="#">
+                Контакты
+            </a>
+
+            <a href="#">
+                Новости
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Поддержка
+            </h3>
+
+            <a href="#">
+                Помощь
+            </a>
+
+            <a href="#">
+                Связаться с нами
+            </a>
+
+            <a href="#">
+                09:00–21:00
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+        © 2026 Family Soft. Все права защищены.
+    </div>
+
+</footer>
+
+
+
+<!-- Всплывающее сообщение -->
+
+<div class="cart-message" id="message"></div>
+
+
+
+<script>
+
+    /*
+       Прокрутка к каталогу
+    */
+
+    function scrollToCatalog() {
+
+        document
+            .getElementById("catalog")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }
+
+
+    /*
+       Всплывающие сообщения
+    */
+
+    function showMessage(text) {
+
+        const message =
+            document.getElementById("message");
+
+        message.innerText = text;
+
+        message.classList.add("show");
+
+        setTimeout(function() {
+
+            message.classList.remove("show");
+
+        }, 2200);
+
+    }
+
+
+    /*
+       Поиск товаров
+    */
+
+    function searchProducts() {
+
+        const input =
+            document
+            .getElementById("searchInput")
+            .value
+            .toLowerCase();
+
+        const products =
+            document.querySelectorAll(".product");
+
+        products.forEach(function(product) {
+
+            const name =
+                product
+                .innerText
+                .toLowerCase();
+
+            if (name.includes(input)) {
+
+                product.style.display = "";
+
+            } else {
+
+                product.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+</script>
+
+</body>
+</html>
